@@ -10,6 +10,7 @@ const cartFunctionsSlice = createSlice({
     addItem(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
+      state.totalQuantity++;
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -24,6 +25,7 @@ const cartFunctionsSlice = createSlice({
       }
     },
     increment(state, action) {
+      state.totalQuantity++;
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       if (existingItem) {
